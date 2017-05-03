@@ -2,6 +2,25 @@
 Resource             page_login.robot
 Resource             ../credentials/dashboard_variables.robot
 
+*** Variables ***
+
+${dashboard_pg_title}                 Dashboard
+${logout_menu}                        xpath=//a[@class='dropdown-toggle']
+${logout_submenu}                     xpath=//i[@class='fa fa-sign-out fa-fw']
+
+${dashboard_pg_search_field}          xpath=//*[@id="side-menu"]/li[1]/div/input
+${dashboard_pg_search_btn}            xpath=//*[@id="side-menu"]/li[1]/div/span/button/i
+${dashboard_pg_search_result_msg}     Search results
+#sidemenu
+${dashboard_pg_link_dashboard}        link=Dashboard
+${dashboard_pg_link_bedroom}          link=Bedroom
+${dashboard_pg_link_bill}             link=Bill
+${dashboard_pg_link_client}           link=Client
+${dashboard_pg_link_reservation}      link=Reservation
+${dashboard_pg_link_user}             link=User
+
+${dashboard_page_content}             Dashboard
+
 *** Keywords ***
 perform_logout
     Wait Until Page Contains Element       ${logout_menu}
@@ -22,39 +41,32 @@ perform_search
 test_links
     Wait Until Page Contains Element       ${dashboard_pg_link_dashboard} 
     click element                          ${dashboard_pg_link_dashboard} 
-    Wait Until Page Contains               ${page_content_dashboard}
-    Page Should Contain                    ${page_content_dashboard}
-   
-    #this is failing every second time    
+    Page Should Contain                    ${dashboard_page_content}
+     
     Wait Until Page Contains Element       ${dashboard_pg_link_bill} 
     click element                          ${dashboard_pg_link_bill} 
-    Wait Until Page Contains               ${page_content}
     Page Should Contain                    ${page_content}
-    
                 
     Wait Until Page Contains Element       ${dashboard_pg_link_client}
     click element                          ${dashboard_pg_link_client}
-    Wait Until Page Contains               ${page_content}
     Page Should Contain                    ${page_content}
    
                          
     Wait Until Page Contains Element       ${dashboard_pg_link_reservation} 
     click element                          ${dashboard_pg_link_reservation}
-    Wait Until Page Contains               ${page_content} 
     Page Should Contain                    ${page_content}
     
                    
     Wait Until Page Contains Element       ${dashboard_pg_link_user}
     click element                          ${dashboard_pg_link_user}
-    Wait Until Page Contains               ${page_content}
     Page Should Contain                    ${page_content}
     
                               
 Test_user_link_2_times_in_a_row
     Wait Until Page Contains Element       ${dashboard_pg_link_user}
-    #this test is going to fail due to error in system, Access denied-message is shown
+    #this test is going to fail due to error in system, Access denied-message is shown, when signed in as a common user
     click element                          ${dashboard_pg_link_user}
-    Go back
+    Page Should Contain                    ${page_content}
     click element                          ${dashboard_pg_link_user}
     Page Should Contain                    ${page_content}
     
