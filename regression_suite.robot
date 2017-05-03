@@ -23,8 +23,8 @@ Test Case 3    #fail expected
     perform_search
     perform_logout   
 
-Test Case 4
-    Test_login_into_the_system_as_common
+Test Case 4    
+    Test_login_into_the_system_as_admin
     test_links
     perform_logout
     
