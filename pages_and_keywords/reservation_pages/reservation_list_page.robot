@@ -1,6 +1,7 @@
 *** Settings ***
 
-Resource                ../page_dashboard.robot
+Resource                            ../page_dashboard.robot
+
 
 *** Variables ***
 
