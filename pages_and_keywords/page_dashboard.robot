@@ -2,15 +2,6 @@
 Resource             page_login.robot
 Resource             ../credentials/dashboard_variables.robot
 
-*** Variables ***
-${dashboard_pg_title}                 Dashboard
-${logout_menu}                        xpath=//a[@class='dropdown-toggle']
-${logout_submenu}                     xpath=//i[@class='fa fa-sign-out fa-fw']
-${dashboard_pg_search_field}          xpath=//*[@id="side-menu"]/li[1]/div/input
-${dashboard_pg_search_btn}            xpath=//*[@id="side-menu"]/li[1]/div/span/button/i
-${dashboard_pg_search_result_msg}     Search results
-
-
 *** Keywords ***
 perform_logout
     Wait Until Page Contains Element       ${logout_menu}
@@ -27,5 +18,44 @@ perform_search
     click element                          ${dashboard_pg_search_btn} 
     #this test is going to fail since nothing happens with search         
     Wait Until Page Contains               ${dashboard_pg_search_result_msg}
+    
+test_links
+    Wait Until Page Contains Element       ${dashboard_pg_link_dashboard} 
+    click element                          ${dashboard_pg_link_dashboard} 
+    Wait Until Page Contains               ${page_content_dashboard}
+    Page Should Contain                    ${page_content_dashboard}
+   
+    #this is failing every second time    
+    Wait Until Page Contains Element       ${dashboard_pg_link_bill} 
+    click element                          ${dashboard_pg_link_bill} 
+    Wait Until Page Contains               ${page_content}
+    Page Should Contain                    ${page_content}
+    
+                
+    Wait Until Page Contains Element       ${dashboard_pg_link_client}
+    click element                          ${dashboard_pg_link_client}
+    Wait Until Page Contains               ${page_content}
+    Page Should Contain                    ${page_content}
+   
+                         
+    Wait Until Page Contains Element       ${dashboard_pg_link_reservation} 
+    click element                          ${dashboard_pg_link_reservation}
+    Wait Until Page Contains               ${page_content} 
+    Page Should Contain                    ${page_content}
+    
+                   
+    Wait Until Page Contains Element       ${dashboard_pg_link_user}
+    click element                          ${dashboard_pg_link_user}
+    Wait Until Page Contains               ${page_content}
+    Page Should Contain                    ${page_content}
+    
+                              
+Test_user_link_2_times_in_a_row
+    Wait Until Page Contains Element       ${dashboard_pg_link_user}
+    #this test is going to fail due to error in system, Access denied-message is shown
+    click element                          ${dashboard_pg_link_user}
+    Go back
+    click element                          ${dashboard_pg_link_user}
+    Page Should Contain                    ${page_content}
     
         

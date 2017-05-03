@@ -9,7 +9,7 @@ Setup
     Open Browser                               ${base_URL}                  browser=${chrome_browser} 
     Maximize Browser Window            
     Set Selenium Speed                         .2
-    Set Selenium Timeout                       30
+    Set Selenium Timeout                       10
     Delete All Cookies
     Wait Until Page Contains                   ${login_pg_label_login}  
     Location Should be                         ${base_url}   

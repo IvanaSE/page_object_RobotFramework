@@ -23,3 +23,10 @@ Test Case 3
     perform_search
     perform_logout   
 
+Test Case 4
+    Test_login_into_the_system_as_admin
+    test_links
+    Test_user_link_2_times_in_a_row
+    perform_logout
+    
+
