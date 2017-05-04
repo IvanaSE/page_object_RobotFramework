@@ -1,7 +1,13 @@
 *** Settings ***
 
+<<<<<<< HEAD
 Resource                            ../page_dashboard.robot
 
+=======
+Resource                ../page_dashboard.robot
+Resource                create_new_reservation_page.robot
+Resource                edit_hotel_reservation_page.robot
+>>>>>>> be5733062aa4237190bce98d7909c75d282fec6b
 
 *** Variables ***
 
@@ -16,10 +22,12 @@ ${reservation_list_pg_btn_edit}                               xpath=//*[@id="j_i
 go_to_new_hotel_reservation_page
     Wait Until Page Contains Element                           ${reservation_list_pg_btn_create_new_reservation} 
     Click element                                              ${reservation_list_pg_btn_create_new_reservation} 
+    Title should be                                            ${create_new_reservation_page_title}    
     
 go_to_edit_reservation_page
     Wait Until Page Contains Element                           ${reservation_list_pg_btn_edit}   
-    Click element                                              ${reservation_list_pg_btn_edit}               
+    Click element                                              ${reservation_list_pg_btn_edit}  
+    Title should be                                            ${edit_hotel_reservation_page_title}               
     
 
 

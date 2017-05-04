@@ -1,5 +1,10 @@
 *** Settings ***
 Resource             page_login.robot
+Resource             bedroom_page.robot
+Resource             bill_page.robot
+Resource             client_page.robot
+Resource             user_page.robot
+Resource             ./reservation_pages/reservation_list_page.robot
 Resource             ../credentials/dashboard_variables.robot
 
 *** Variables ***
@@ -42,32 +47,36 @@ test_links
     Wait Until Page Contains Element       ${dashboard_pg_link_dashboard} 
     click element                          ${dashboard_pg_link_dashboard} 
     Page Should Contain                    ${dashboard_page_content}
+    
+    Wait Until Page Contains Element       ${dashboard_pg_link_bedroom} 
+    click element                          ${dashboard_pg_link_bedroom}  
+    Page Should Contain                    ${bedroom_page_content}
      
     Wait Until Page Contains Element       ${dashboard_pg_link_bill} 
     click element                          ${dashboard_pg_link_bill} 
-    Page Should Contain                    ${page_content}
+    Page Should Contain                    ${bill_page_content}
                 
     Wait Until Page Contains Element       ${dashboard_pg_link_client}
     click element                          ${dashboard_pg_link_client}
-    Page Should Contain                    ${page_content}
+    Page Should Contain                    ${client_page_content}
    
                          
     Wait Until Page Contains Element       ${dashboard_pg_link_reservation} 
     click element                          ${dashboard_pg_link_reservation}
-    Page Should Contain                    ${page_content}
+    Page Should Contain                    ${reservation_list_pg_content}
     
                    
     Wait Until Page Contains Element       ${dashboard_pg_link_user}
     click element                          ${dashboard_pg_link_user}
-    Page Should Contain                    ${page_content}
+    Page Should Contain                    ${user_page_content}
     
                               
 Test_user_link_2_times_in_a_row
     Wait Until Page Contains Element       ${dashboard_pg_link_user}
     #this test is going to fail due to error in system, Access denied-message is shown, when signed in as a common user
     click element                          ${dashboard_pg_link_user}
-    Page Should Contain                    ${page_content}
+    Page Should Contain                    ${user_page_content}
     click element                          ${dashboard_pg_link_user}
-    Page Should Contain                    ${page_content}
+    Page Should Contain                    ${user_page_content}
     
         
