@@ -38,4 +38,13 @@ Test Case 6
     Test_user_link_2_times_in_a_row
     perform_logout
     
+Test Case 7
+    Test_login_into_the_system_as_admin
+    go_to_create_new_hotel_reservation_page
+    create_new_reservation    
+    perform_logout
+    
+        
+    
+    
 
