@@ -1,5 +1,5 @@
 *** Settings ***
-Resource                                    page_list_reservation.robot
+Resource                                    reservation_list_page.robot                                  
 Resource                                    ../page_dashboard.robot
 
 Library                                     String
