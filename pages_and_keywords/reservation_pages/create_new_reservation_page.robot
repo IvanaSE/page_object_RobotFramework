@@ -22,7 +22,8 @@ ${reservation_new_select_bedroom}                              id=bedroomId
 ${reservation_new_select_client}                               id=clientId
 ${reservation_new_select_status}                              id=reservationStatusId  
 ${reservationnew_option_status_confirmed}                      1
-
+${reservation_bed_id}                                          2
+${reservation_client_id}                                       1
 
 
 *** Keywords ***
@@ -36,9 +37,9 @@ go_to_create_new_hotel_reservation_page
 
  create_new_reservation    
     #Enter data
-    Select From List                        ${reservation_new_select_bedroom}                            
-    Select From List                        ${reservation_new_select_client}                                 
-    Select From List By Value               ${reservation_new_select_status}                      ${reservationnew_option_status_confirmed}
+    Select From List By Value                       ${reservation_new_select_bedroom}                     ${reservation_bed_id}                             
+    Select From List By Value                      ${reservation_new_select_client}                        ${reservation_client_id}           
+    Select From List By Value                        ${reservation_new_select_status}                      ${reservationnew_option_status_confirmed}
     
                
     
